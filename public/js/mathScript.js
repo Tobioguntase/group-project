@@ -9,6 +9,12 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 let shuffleQuestions,currentQuestionIndex;
 let quizScore =0; 
 
+startButton.addEventListener('click',startGame)
+nextButton.addEventListener('click',() =>{
+    currentQuestionIndex++
+    setnextQuestion()
+})
+
 function setStatusClass(element,correct){
     clearStatusClass(element)
     if(correct){
