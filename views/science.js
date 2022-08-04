@@ -29,7 +29,7 @@ function setNextQuestion(question) {
 } 
 
 function showQuestion(question) {
-    questionElement.innerText = question.quesiton
+    questionElement.innerText = question.question
     question.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
@@ -81,7 +81,7 @@ function clearStatusClass(element) {
 
 const questions = [
     {
-        quesiton: 'What is 33 x 2?',
+        question: 'What is 33 x 2?',
         answers: [
              {text: '66', correct: true },
              {text: '4', correct: false }
@@ -89,7 +89,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 8 + 12?',
+        question: 'What is 8 + 12?',
         answers: [
              {text: '20', correct: true },
              {text: '67', correct: false }
@@ -97,7 +97,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 5 x 2?',
+        question: 'What is 5 x 2?',
         answers: [
              {text: '10', correct: true },
              {text: '6', correct: false }
@@ -105,7 +105,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 44 / 2?',
+        question: 'What is 44 / 2?',
         answers: [
              {text: '22', correct: true },
              {text: '48', correct: false }
