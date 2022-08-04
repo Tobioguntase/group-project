@@ -1,30 +1,33 @@
 :root {
-    --hue-neutral :200;
-    --hue-wrong : 0;
+    --hue-neutral: 200;
+    --hue-wrong: 0;
     --hue-correct: 145;
 }
 
 body {
     --hue: var(--hue-neutral);
-    
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
+    
 }
 
 body.correct {
-    --hue: var(--hue-correct)
+    --hue: var(--hue-correct);
 
 }
 body.wrong {
-    --hue: var(--hue-wrong)
+    --hue: var(--hue-wrong);
     
 }
 
 .container {
     width: 800px;
-    
     max-width: 80%;
-    background-color: white;
+    background-color: hsl(var(--hue), 100%, 20%);
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
@@ -33,7 +36,7 @@ body.wrong {
 
 .btn-grid {
     display: grid;
-    grid-template-columns: repeat(2,auto);
+    grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
 }
@@ -41,7 +44,7 @@ body.wrong {
 .btn {
     --hue :var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
-    background-color: hsl(var(--hue), 100%, 50%);
+    background-color: black;
     padding: 5px 10px;
     color: white;
     outline: none;
@@ -52,9 +55,18 @@ body.wrong {
     border-color: black;
 }
 
-.start-btn,
-.next-btn {
-    font-size: large;
+.btn.correct{
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.btn.wrong{
+    --hue: var(--hue-wrong);
+}
+
+
+.start-btn, .next-btn {
+    font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
     cursor: pointer;
