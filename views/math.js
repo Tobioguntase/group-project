@@ -3,7 +3,13 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+
+
 startButton.addEventListener('click', startGame)
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -37,6 +43,7 @@ function showQuestion(question) {
 }
 
 function resetState() {
+    clearStatusClass(document.body)
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -50,6 +57,12 @@ function selectAnswer(e) {
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton.classList.remove('hide')
+    } else {
+        startButton.innerText = 'Restart with random question'
+        startButton.classList.remove('hide')
+    }
 }
 
 function setStatusClass(element, correct) {
@@ -72,6 +85,30 @@ const questions = [
         answers: [
              {text: '66', correct: true },
              {text: '4', correct: false }
+
+        ]
+    },
+    {
+        quesiton: 'What is 8 + 12?',
+        answers: [
+             {text: '20', correct: true },
+             {text: '67', correct: false }
+
+        ]
+    },
+    {
+        quesiton: 'What is 5 x 2?',
+        answers: [
+             {text: '10', correct: true },
+             {text: '6', correct: false }
+
+        ]
+    },
+    {
+        quesiton: 'What is 44 / 2?',
+        answers: [
+             {text: '22', correct: true },
+             {text: '48', correct: false }
 
         ]
     }
