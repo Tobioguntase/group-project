@@ -12,6 +12,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
+    background-color: hsl(var(--hue), 100%, 20%);
     
 }
 
@@ -44,16 +45,14 @@ body.wrong {
 .btn {
     --hue :var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
-    background-color: black;
+    background-color: hsl(var(--hue), 100%, 20%);
     padding: 5px 10px;
     color: white;
     outline: none;
     cursor: pointer;
 }
 
-.btn:hover {
-    border-color: black;
-}
+
 
 .btn.correct{
     --hue: var(--hue-correct);
