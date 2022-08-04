@@ -81,10 +81,10 @@ function clearStatusClass(element) {
 
 const questions = [
     {
-        question: 'What is 33 x 2?',
+        question: 'the chemical fourmula for water is ________',
         answers: [
-             {text: '66', correct: true },
-             {text: '4', correct: false }
+             {text: 'H2O', correct: true },
+             {text: 'CO2', correct: false }
 
         ]
     },
