@@ -4,6 +4,10 @@
     --hue-correct: 145;
 }
 
+.nav-link {
+    color:black
+}
+
 body {
     --hue: var(--hue-neutral);
     padding: 0;
