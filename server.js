@@ -7,7 +7,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', route);
     
 mongoose.connect("mongodb+srv://gpuser:s18Okv4gHbrHNM8q@cluster0.nshincw.mongodb.net/group-project", {useNewURLParser: true, useUnifiedTopology: true})

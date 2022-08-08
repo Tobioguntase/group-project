@@ -91,3 +91,16 @@ body.wrong {
 .hide {
     display: none;
 }
+
+#hud {
+    display: flex;
+    justify-content: center;
+}
+
+.hud-prefix {
+    text-align: center;
+}
+
+.hud-main-text {
+    text-align: center;
+}
