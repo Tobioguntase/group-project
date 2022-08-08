@@ -28,6 +28,14 @@ router.get('/contact', (req, res) => {
     res.render('contact')
 })
 
+router.get('/logIn', (req, res) => {
+    res.render('logIn')
+})
+
+router.get('/signUp', (req, res) => {
+    res.render('signUp')
+})
+
 router.post('/submitSignUp', (req, res) => {
     const signUp = new SignUp ({
         fname: req.body.fname,
