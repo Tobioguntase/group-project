@@ -26,6 +26,14 @@ router.get('/contact', (req, res) => {
     res.render('contact')
 })
 
+router.get('/logIn', (req, res) => {
+    res.render('logIn')
+})
+
+router.get('/signUp', (req, res) => {
+    res.render('signUp')
+})
+
 router.post('/submitContact', (req, res) => {
     const contact = new Contact ({
         fname: req.body.fname,
