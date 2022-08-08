@@ -3,7 +3,8 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
-
+const scoreElement = document.getElementById('score')
+const scoreContainer = document.getElementById('hud-item')
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -12,12 +13,17 @@ nextButton.addEventListener('click', () => {
 })
 
 let shuffledQuestions, currentQuestionIndex
+let score = 0;
+
+const CORRECT_BONUS = 10;
 
 function startGame() {
     console.log('started');
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
+    resetScore()
+    scoreContainer.classList.remove("hide")
     questionContainerElement.classList.remove("hide")
     setNextQuestion()
 }
@@ -29,7 +35,7 @@ function setNextQuestion(question) {
 } 
 
 function showQuestion(question) {
-    questionElement.innerText = question.quesiton
+    questionElement.innerText = question.question
     question.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
@@ -48,25 +54,30 @@ function resetState() {
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
+    
 }
 
 function selectAnswer(e) {
     const selectedButton = e.target
+    if (selectedButton.dataset.correct) {
+        incrementScore(CORRECT_BONUS)
+    }
     const correct = selectedButton.dataset.correct
     setStatusClass(document.body, correct)
     Array.from(answerButtonsElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton.classList.remove('hide')
+        nextButton.classList.remove('hide')
     } else {
         startButton.innerText = 'Restart with random question'
         startButton.classList.remove('hide')
     }
+
+    
 }
 
 function setStatusClass(element, correct) {
-    clearStatusClass(element)
     if (correct) {
         element.classList.add('correct')
     } else {
@@ -77,11 +88,22 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
+   
+}
+
+function resetScore() {
+    score = 0;
+    scoreElement.innerText = score;
+}
+
+function incrementScore(num) {
+    score += num;
+    scoreElement.innerText = score;
 }
 
 const questions = [
     {
-        quesiton: 'What is 33 x 2?',
+        question: 'What is 33 x 2?',
         answers: [
              {text: '66', correct: true },
              {text: '4', correct: false }
@@ -89,7 +111,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 8 + 12?',
+        question: 'What is 8 + 12?',
         answers: [
              {text: '20', correct: true },
              {text: '67', correct: false }
@@ -97,7 +119,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 5 x 2?',
+        question: 'What is 5 x 2?',
         answers: [
              {text: '10', correct: true },
              {text: '6', correct: false }
@@ -105,7 +127,7 @@ const questions = [
         ]
     },
     {
-        quesiton: 'What is 44 / 2?',
+        question: 'What is 44 / 2?',
         answers: [
              {text: '22', correct: true },
              {text: '48', correct: false }
