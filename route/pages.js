@@ -36,6 +36,10 @@ router.get('/signUp', (req, res) => {
     res.render('signUp')
 })
 
+router.get('/pwReset', (req,res) => {
+    res.render('pwReset')
+})
+
 router.post('/submitSignUp', (req, res) => {
     const signUp = new SignUp ({
         fname: req.body.fname,
@@ -56,16 +60,14 @@ router.post('/submitSignUp', (req, res) => {
 
 router.post('/submitLogIn', (req, res) => {
     const logIn = new LogIn ({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        reason: req.body.reason,
-        comment: req.body.comment
+        userEmail: req.body.userEmail,
+        userPassword: req.body.userPassword,
+        rememberMe: req.body.rememberMe
     });
 
     LogIn.collection.insertOne(logIn)
     .then(result => {
-        res.render('contact')
+        res.render('logIn')
     })
 
     .catch(err => console.log(err));

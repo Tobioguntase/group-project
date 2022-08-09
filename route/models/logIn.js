@@ -1,25 +1,18 @@
 const mongoose = require('mongoose');
 
 var logInSchema = new mongoose.Schema({
-    fname: {
+    userEmail: {
         type: String
     },
     
-    lname: {
+    userPassword: {
         type: String
     },
 
-    email: {
-        type: String
-    },
-    
-    reason: {
-        type: String
-    },
-
-    comment: {
-        type: String
+    rememberMe: {
+        type: Boolean
     }
+
 });
 
 module.exports = mongoose.model('LogIn', logInSchema);
