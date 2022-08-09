@@ -9,10 +9,6 @@ var logInSchema = new mongoose.Schema({
         type: String
     },
 
-    rememberMe: {
-        type: Boolean
-    }
-
 });
 
 module.exports = mongoose.model('LogIn', logInSchema);

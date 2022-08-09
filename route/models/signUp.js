@@ -9,17 +9,14 @@ var SignUpSchema = new mongoose.Schema({
         type: String
     },
 
-    email: {
+    userEmail: {
         type: String
     },
     
-    reason: {
+    userPassword: {
         type: String
     },
 
-    comment: {
-        type: String
-    }
 });
 
 module.exports = mongoose.model('SignUp', SignUpSchema);

@@ -11,22 +11,28 @@
   <div class="row d-flex justify-content-center">
     <div class="col-5 text-center signupform p-5">
       <form action="/submitSignUp" method="post"> 
-        <div class="panel" id="login"><h1>Sign Up</h1> <br>
-
-            <h6 style="text-align: left;"> First Name</h6>
-            <input  for="fname" type="text" class="form-control mb-4" name="fname" aria-describedby="fname" placeholder="enter your first name" required> 
-
-            <h6 style="text-align: left;"> Last Name</h6>
-            <input  for="lname" type="text" class="form-control mb-4" name="lname" aria-describedby="lname" placeholder="enter your last name" required> 
-
-            <h6 style="text-align: left;"> Email Address</h6>
-            <input  for="em" type="text" class="form-control mb-4" name="userEmail" aria-describedby="email" placeholder="enter email" required> 
-            
-            <h6 style="text-align:left"> Password</h6>
-            <input for="pw" type="text" class="form-control mb-4" name="userPassword" aria-describedby="password" placeholder="enter password" required>
-            
-            <h6 style="text-align:left"> Confirm Password</h6>
-            <input for="pwCheck" type="text" class="form-control mb-4" name="userPassword" aria-describedby="password" placeholder="confirm password" required>
+        <div class="panel" id="signup"><h1>Sign Up</h1> <br>
+          
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="fname"> First Name</label>
+            <input type="text" class="form-control mb-4" name="fname" aria-describedby="fname" placeholder="enter your first name" required> 
+          </div>
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="lname"> Last Name</label>
+            <input  type="text" class="form-control mb-4" name="lname" aria-describedby="lname" placeholder="enter your last name" required> 
+          </div>
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="em"> Email Address</label>
+            <input   type="email" class="form-control mb-4" name="userEmail" aria-describedby="email" placeholder="enter email" required> 
+          </div>
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="pw"> Password</label>
+            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Contains at least one number, uppercase letter, lowercase letter, and be of at least 8 characters" class="form-control mb-4" name="userPassword" aria-describedby="password" placeholder="enter password" required>
+          </div>
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="pwCheck"> Confirm Password</label>
+            <input type="password" title="Passwords do not match" class="form-control mb-4" name="passwordConf" aria-describedby="passwordConf" placeholder="confirm password" required>
+          </div>
             <div class="d-grid mb-4">
             <button class="btn btn-primary" type="submit">Sign Up</button>
             </div>
@@ -36,11 +42,7 @@
             <a href="/">Cancel</a></div>
       </form>
   </div>
-
-      
-
+  </div> 
   </div>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-  <script src="js/login.js"></script> 
+  <script src="js/signup.js"></script> 

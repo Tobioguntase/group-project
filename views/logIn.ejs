@@ -12,27 +12,25 @@
     <div class="col-5 text-center loginform p-5">
       <form action="/submitLogIn" method="post"> 
         <div class="panel" id="login"><h1>Log in</h1> <br>
-
-            <h6 style="text-align: left;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="em"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
               fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg> Email Address</h6>
-            <input type="text" class="form-control mb-4" name="userEmail" aria-describedby="email" placeholder="enter your email" required> 
-            
-            <h6 style="text-align:left"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            </svg> Email Address </label>
+            <input   type="email" class="form-control mb-4" name="userEmail" aria-describedby="email" placeholder="enter email" required> 
+          </div>
+          <div class="form-group" style="text-align: left; font-weight:500">
+            <label for="pw"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
               <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-            </svg> Password</h6>
-            <input type="text" class="form-control mb-4" name="userPassword" aria-describedby="password" placeholder="enter your password" required>
+            </svg>Password</label>
+            <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Contains at least one number, uppercase letter, lowercase letter, and be of at least 8 characters" class="form-control mb-4" name="userPassword" aria-describedby="password" placeholder="enter password" required>
+          </div>
             
             <div class="d-grid mb-4">
             <button class="btn btn-primary" type="submit">Log In</button>
             </div>
 
             <label for="rememberMe"><input type="checkbox" name="rememberMe" value="checked">Remember me</label>
-            <script>
-              const checked = document.querySelector('#rememberMe:checked') !== null;
-              console.log(checked);
-            </script>
           </div>
    
             <a href="/signUp">New to our site? <span>Sign Up</span></a> <br>
