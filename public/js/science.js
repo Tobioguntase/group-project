@@ -5,6 +5,20 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const scoreElement = document.getElementById('score')
 const scoreContainer = document.getElementById('hud-item')
+const homePage = document.getElementById('home-page')
+const submitButton = document.getElementById('submit-btn')
+const userInfo = document.getElementById('user-info')
+const username = document.getElementById('uname')
+
+const highScores = JSON.parse(localStorage.getItem("highScores")) || []; 
+const MAX_HIGH_SCORES = 5;
+
+
+
+username.addEventListener('keyup', () =>{
+    console.log(username.value) 
+    submitButton.disabled = !username.value
+})
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -50,6 +64,9 @@ function showQuestion(question) {
 
 function resetState() {
     clearStatusClass(document.body)
+    userInfo.classList.add('hide')
+    submitButton.classList.add('hide')
+    homePage.classList.add('hide')
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -70,10 +87,35 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
     } else {
-        startButton.innerText = 'Restart with random question'
+        localStorage.setItem("mostRecentScore", score)
+        userInfo.classList.remove('hide')
+        submitButton.classList.remove('hide')
+        homePage.classList.remove('hide')
+        startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
+}
 
+function saveHighScore(e) {
+    console.log("clicked the save button")
+    e.preventDefault();
+
+    const scoreObject = {
+        mostRecentScore: score,
+        name: username.value,
+        quiz: 'Science Quiz'
+    }
+    highScores.push(scoreObject)
+
+    highScores.sort((a,b) => b.mostRecentScore - a.mostRecentScore)
+
+    highScores.splice(5); 
+
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+
+    window.location.assign("/")
+
+    console.log(highScores)
     
 }
 

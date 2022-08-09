@@ -5,6 +5,20 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const scoreElement = document.getElementById('score')
 const scoreContainer = document.getElementById('hud-item')
+const homePage = document.getElementById('home-page')
+const submitButton = document.getElementById('submit-btn')
+const userInfo = document.getElementById('user-info')
+const username = document.getElementById('uname')
+
+const highScores = JSON.parse(localStorage.getItem("highScores")) || []; 
+const MAX_HIGH_SCORES = 5;
+
+
+
+username.addEventListener('keyup', () =>{
+    console.log(username.value) 
+    submitButton.disabled = !username.value
+})
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -50,6 +64,9 @@ function showQuestion(question) {
 
 function resetState() {
     clearStatusClass(document.body)
+    userInfo.classList.add('hide')
+    submitButton.classList.add('hide')
+    homePage.classList.add('hide')
     nextButton.classList.add('hide')
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -70,10 +87,35 @@ function selectAnswer(e) {
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
     } else {
-        startButton.innerText = 'Restart with random question'
+        localStorage.setItem("mostRecentScore", score)
+        userInfo.classList.remove('hide')
+        submitButton.classList.remove('hide')
+        homePage.classList.remove('hide')
+        startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
+}
 
+function saveHighScore(e) {
+    console.log("clicked the save button")
+    e.preventDefault();
+
+    const scoreObject = {
+        mostRecentScore: score,
+        name: username.value,
+        quiz: 'Reading & Writing Quiz'
+    }
+    highScores.push(scoreObject)
+
+    highScores.sort((a,b) => b.mostRecentScore - a.mostRecentScore)
+
+    highScores.splice(5); 
+
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+
+    window.location.assign("/")
+
+    console.log(highScores)
     
 }
 
@@ -100,38 +142,95 @@ function incrementScore(num) {
     score += num;
     scoreElement.innerText = score;
 }
-
 const questions = [
     {
-        question: 'What is 33 x 2?',
+        question: 'They did not reach an agreement ______ their differences',
         answers: [
-             {text: '66', correct: true },
-             {text: '4', correct: false }
-
+             {text: 'on account of', correct: true },
+             {text: 'due', correct: false },
+             {text: 'because', correct: false },
+             {text: 'due', correct: false }
         ]
     },
     {
-        question: 'What is 8 + 12?',
+        question: "I wish I _____ those words. But now it's too late",
         answers: [
-             {text: '20', correct: true },
-             {text: '67', correct: false }
-
+             {text: 'not having said', correct: false },
+             {text: 'have never said', correct: false },
+             {text: 'never said', correct: false },
+             {text: 'had never said', correct: true }
         ]
     },
     {
-        question: 'What is 5 x 2?',
+        question: "words that can be used to discribe a verb, an adverb, adjective, or a whole sentence are called _______",
         answers: [
-             {text: '10', correct: true },
-             {text: '6', correct: false }
-
+             {text: 'objects', correct: false },
+             {text: 'adjectives', correct: false },
+             {text: 'verbs', correct: false },
+             {text: 'adverbs', correct: true }
         ]
     },
     {
-        question: 'What is 44 / 2?',
+        question: "The woman, who has been missing for 10 days, is believed _____",
         answers: [
-             {text: '22', correct: true },
-             {text: '48', correct: false }
-
+             {text: 'to be abducted', correct: false },
+             {text: 'to be abducting', correct: false },
+             {text: 'to have been abducted', correct: true },
+             {text: 'to have been abducting', correct: false }
         ]
-    }
+    },
+    {
+        question: "_____ to offend anyone, she said both cakes were equally good",
+        answers: [
+             {text: 'Not wanting', correct: true },
+             {text: 'As not wanting', correct: false },
+             {text: 'She didnt want', correct: false },
+             {text: 'Because not wanting', correct: false }
+        ]
+    },
+    {
+        question: "He _____ robbed as he was walking out of the bank",
+        answers: [
+             {text: 'had', correct: false },
+             {text: 'got', correct: true },
+             {text: 'did', correct: false },
+             {text: 'were', correct: false }
+        ]
+    },
+    {
+        question: "She was working on her computer with her baby next to _____",
+        answers: [
+             {text: 'her own', correct: false },
+             {text: 'herself', correct: false },
+             {text: 'her', correct: true },
+             {text: 'hers', correct: false }
+        ]
+    },
+    {
+        question: "_____ in trying to solve this problem. It's clearly unsolvable",
+        answers: [
+             {text: "There's no point", correct: true },
+             {text: "It's not point", correct: false },
+             {text: "There isn't point", correct: false },
+             {text: "It's no need", correct: false }
+        ]
+    },
+    {
+        question: "Last year, when I last met her, she told me she _____ a letter every day for the last two months",
+        answers: [
+             {text: 'had written', correct: false },
+             {text: 'has written', correct: false },
+             {text: 'had been writing', correct: true },
+             {text: 'wrote', correct: false }
+        ]
+    },
+    {
+        question: "We'll never know what might have happened _____ the email earlier",
+        answers: [
+             {text: 'if he sent', correct: false },
+             {text: 'had he sent', correct: true },
+             {text: 'if he has sent', correct: false },
+             {text: 'did he sent', correct: false }
+        ]
+    },
 ]

@@ -104,3 +104,8 @@ body.wrong {
 .hud-main-text {
     text-align: center;
 }
+
+input {
+    text-align: center;
+}
+
