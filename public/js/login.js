@@ -1,7 +1,5 @@
-//trying to implement verification and remember checkbox
-
-const rememberCheck = document.getElementById("rememberMe"),
-    emailInput = document.getElementById("email");
+const rememberCheck = document.getElementById("rememberMe"), 
+emailInput = document.getElementById("email");
 
 if (localStorage.checkbox && localStorage.checkbox !== "") {
   rmCheck.setAttribute("checked", "checked");

@@ -66,7 +66,7 @@ router.post('/submitLogIn', (req, res) => {
 
     LogIn.collection.insertOne(logIn)
     .then(result => {
-        res.render('/')
+        res.render('index')
     })
 
     .catch(err => console.log(err));
