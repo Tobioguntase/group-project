@@ -44,14 +44,13 @@ router.post('/submitSignUp', (req, res) => {
     const signUp = new SignUp ({
         fname: req.body.fname,
         lname: req.body.lname,
-        email: req.body.email,
-        reason: req.body.reason,
-        comment: req.body.comment
+        userEmail: req.body.userEmail,
+        userPassword: req.body.userPassword
     });
 
     SignUp.collection.insertOne(signUp)
     .then(result => {
-        res.render('contact')
+        res.render('success')
     })
 
     .catch(err => console.log(err));
@@ -67,7 +66,7 @@ router.post('/submitLogIn', (req, res) => {
 
     LogIn.collection.insertOne(logIn)
     .then(result => {
-        res.render('logIn')
+        res.render('/')
     })
 
     .catch(err => console.log(err));
