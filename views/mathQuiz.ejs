@@ -23,7 +23,7 @@
       <br>
       <br>
 
-      <div class="container">
+    <div class="container">
         <div id="question-container" class="hide">
             <div id="question">Question</div> 
             <div id="answer-buttons" class="btn-grid">
@@ -35,18 +35,29 @@
             </div>
         </div>
 
+        
         <div id="hud-item" class="hide">
           <p class="hud-prefix">
             Score
           </p>
-          <h1 class="hud-main-text" id="score">
-            0
+          <form action="/submitMathQuiz" method="post">
+          <h1 class="hud-main-text" name="s" id="score">
+            
           </h1>
         </div>
 
+        <div id="user-info" class="hide">
+          <input type="text" name="uname" id="uname"  placeholder="username">
+          <input type="password" name="pword" id="pword" placeholder="password">
+        </div>
+
+
         <div class="controls">
+            <button type="submit" id="submit-btn" class="submit-btn btn hide">Submit Score</button>
+            </form>
             <button id="start-btn" class="start-btn btn">Start Math Quiz</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
+            <a id="home-page" class="home-page btn hide" href="/">Return to Home Page</a>
         </div>
         
     </div>
