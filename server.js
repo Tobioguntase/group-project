@@ -12,7 +12,7 @@ app.use('/', route);
     
 mongoose.connect("mongodb+srv://gpuser:s18Okv4gHbrHNM8q@cluster0.nshincw.mongodb.net/group-project", {useNewURLParser: true, useUnifiedTopology: true})
 .then(() => {
-    app.listen(3000, () => {
-        console.log("Server is running on 3000")
+    app.listen(process.env.PORT || 5000, () => {
+        console.log("Server is running on 5000")
     })
 })
